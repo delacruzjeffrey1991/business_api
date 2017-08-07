@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Interactions</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Interactions List
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    <div >
+                     <table datatable="ng" dt-options="dtOptions" dt-instance="dtInstance" dt-column-defs="dtColumnDefs" class="row-border hover table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Product</th>
+                                <th>Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="interactions in interactionss">
+                                <td>{{ $index + 1 }}</td>
+                               <td>{{ interactions.name }}</td>
+                               <td>{{ interactions.classification }}</td>
+                               <td>{{interactions.product.name }}</td>
+                               <td>
+                                <button type="button" ng-click="modifyInteractions(interactions,$index)" class="btn btn-warning"><i class="fa fa-edit"></i></button>
+                                <button type="button" ng-click="removeInteractions(interactions,$index)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+                          </div>
+                          <!-- <button class= "btn btn-success" ng-click="accept($index)"><strong>Add New Client</strong></button> -->
+                          <a ui-sref="dashboard.addInteractions">
+                                <button class="btn btn-success" ><strong>Add New Interactions</strong></button>
+                            </a>
+                          <!-- /.table-responsive -->
+                      </div>
+                      <!-- /.panel-body -->
+                  </div>
+                  <!-- /.panel -->
+              </div>
+              <!-- /.col-lg-6 -->
+          </div>

@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Grades</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Grade List
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    <div >
+                     <table datatable="ng" dt-options="dtOptions"   dt-column-defs="dtColumnDefs" class="row-border hover table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Max Score</th>
+                                <th>Auto Fail</th>
+                                <th>Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="grade in grades">
+                                <td>{{ $index + 1 }}</td>
+                               <td>{{ grade.name }}</td>
+                               <td>{{ grade.max_score }}</td>
+                               <td>{{grade.auto_fail}}</td>
+                               <td>
+                                <button type="button" ng-click="modifyGrade(grade,$index)" class="btn btn-warning"><i class="fa fa-edit"></i></button>
+                                <button type="button" ng-click="removeGrade(grade,$index)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+                          </div>
+                          <!-- <button class= "btn btn-success" ng-click="accept($index)"><strong>Add New Grade</strong></button> -->
+                          <a ui-sref="dashboard.addGrade">
+                                <button class="btn btn-success" ><strong>Add New Grade</strong></button>
+                            </a>
+                          <!-- /.table-responsive -->
+                      </div>
+                      <!-- /.panel-body -->
+                  </div>
+                  <!-- /.panel -->
+              </div>
+              <!-- /.col-lg-6 -->
+          </div>

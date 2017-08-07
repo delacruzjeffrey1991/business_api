@@ -1,0 +1,48 @@
+<div class="navbar-default sidebar" role="navigation">
+	<div class="sidebar-nav navbar-collapse">
+		<ul class="nav in" id="side-menu">
+			<sidebar-search></sidebar-search>
+
+			<li ui-sref="dashboard.home">
+				<a href="" ><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+			</li>
+			<li ng-class="{active: collapseVar==1}" ui-sref="dashboard.client">
+				<a href="" ng-click="check(1)"><i class="fa fa-star fa-fw"></i> Clients</a>
+			</li>
+			<li ng-class="{active: collapseVar==2}" >
+				<a href="" ng-click="check(2)"><i class="fa fa-group fa-fw"></i> Groups</a>
+			</li>
+			<li ng-class="{active: collapseVar==3}" >
+				<a href="" ng-click="check(3)"><i class="fa fa-phone fa-fw"></i> Contacts</a>
+			</li>
+<!-- 			<li ng-class="{active: collapseVar==1}" ui-sref="dashboard.administration">
+				<a href="" ng-click="check(1)"><i class="fa fa-star fa-fw"></i> QA Administration Page</a>
+			</li>
+			<li ng-class="{active: collapseVar==2}" ui-sref="dashboard.interactions">
+				<a href="" ng-click="check(2)"><i class="fa fa-laptop fa-fw"></i> QA Interactions List</a>
+			</li>
+			<li ng-class="{active: collapseVar==3}" ui-sref="dashboard.client">
+				<a href="" ng-click="check(3)"><i class="fa fa-group fa-fw"></i> QA Client List</a>
+			</li>
+			<li ng-class="{active: collapseVar==4}" ui-sref="dashboard.grade">
+				<a href="" ng-click="check(4)"><i class="fa fa-bar-chart fa-fw"></i> QA Grade List</a>
+			</li>
+			<li ng-class="{active: collapseVar==5}" ui-sref="dashboard.qaProfile">
+				<a href="" ng-click="check(5)"><i class="fa fa-user fa-fw"></i> QA Profile List</a>
+			</li> 
+			<li ng-class="{active: collapseVar==6}" ui-sref="dashboard.campaign">
+				<a href="" ng-click="check(6)"><i class="fa fa-flag fa-fw"></i> Campaign List</a>
+			</li>
+			<li ng-class="{active: collapseVar==7}" ui-sref="dashboard.workbench">
+				<a href="" ng-click="check(7)"><i class="fa fa-headphones fa-fw"></i> Agent Workbench</a>
+			</li> 
+			<li ng-class="{active: collapseVar==8}" ui-sref="dashboard.uploadCall">
+				<a href="" ng-click="check(8)"><i class="fa fa-phone fa-fw"></i> Upload Call</a>
+			</li> 
+		</ul>
+	</div>
+	<!-- /.sidebar-collapse -->
+</div> 
+
+
+
