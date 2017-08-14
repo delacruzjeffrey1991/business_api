@@ -1,27 +1,22 @@
 var mongoose = require('mongoose');
 
-var CallSchema = new mongoose.Schema({
-  interaction: {
-    type : mongoose.Schema.Types.ObjectId,
-    ref: 'Interactions' 
+var GroupsSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
   },
-  agent: {
-    type : mongoose.Schema.Types.ObjectId,
-    ref: 'User' 
-  },
-  timeStamp: {
+  date_created: {
     type: Date, default: Date.now
   },
-   fileLocation: {
-    type: String
+    client_list : [{ 
+    type : mongoose.Schema.Types.ObjectId,
+    ref: 'Client' 
+
+  }],
+    is_taxable: {
+    type: Boolean
   },
-  agentName: {
-    type: String
-  },
-  description: {
-    type: String
-  }
 
 });
 
-module.exports = mongoose.model('Call', CallSchema);
+module.exports = mongoose.model('Groups', GroupsSchema);

@@ -168,6 +168,20 @@ angular
           }
         }
     })
+    .state('dashboard.show_client', {
+      templateUrl:'views/show_client.html',
+        url: "/show_client.html/:clientId",
+        controller:'ShowClientCtrl',
+        resolve: {
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/showClientController.js',
+                'scripts/services/service.js']
+            })
+          }
+        }
+    })
     .state('dashboard.addClient',{
         templateUrl:'views/addClient.html',
         url:'/addClient',
@@ -185,6 +199,38 @@ angular
           }
         }
     })
+  .state('dashboard.groups',{
+        templateUrl:'views/groups.html',
+        url:'/groups',        
+        controller:'GroupsCtrl',
+        resolve: {
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/groupsController.js',
+                'scripts/services/service.js']
+            })
+          }
+        }
+    })
+    .state('dashboard.addGroups',{
+        templateUrl:'views/addGroups.html',
+        url:'/addGroups',
+        params: {
+            groups: null
+         },
+         controller : 'AddGroupsCtrl',
+        resolve: {
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/groupsController.js',
+                'scripts/services/service.js']
+            })
+          }
+        }
+    })
+
     .state('dashboard.addProduct',{
         templateUrl:'views/addProduct.html',
         url:'/addProduct',

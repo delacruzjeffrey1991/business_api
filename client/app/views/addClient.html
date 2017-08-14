@@ -17,7 +17,7 @@
                         <form role="form"  name="clientForm">
                             <div class="form-group">
                                 <label for="singleSelect">Business Structure : </label>
-                                <select name="singleSelect" id="singleSelect" ng-model="campaign.business_structure">
+                                <select name="singleSelect" id="singleSelect" ng-model="client.business_structure">
                                   <option value="">Select...</option> 
                                   <option value="Company">Company</option>
                                   <option value="Individual">Individual</option>
@@ -29,7 +29,7 @@
                           </div>
                           <div class="form-group">
                             <label for="singleSelect">Partner : </label>
-                            <select name="singleSelect" id="singleSelect" ng-model="campaign.status">
+                            <select name="singleSelect" id="singleSelect" ng-model="client.partner">
                               <option value="">Select...</option> 
                               <option value="Company">Sample</option>
                               <option value="Individual">Sample</option>
@@ -37,15 +37,30 @@
                       </div>
                       <div class="form-group">
                         <label for="singleSelect">Manager :  </label>
-                        <select name="singleSelect" id="singleSelect" ng-model="campaign.status">
+                        <select name="singleSelect" id="singleSelect" ng-model="client.manager">
                           <option value="">Select...</option> 
                           <option value="Company">Sample</option>
                           <option value="Individual">Sample</option>
                       </select><br>
                   </div>
-                  <div class="form-group">
+                <div class="form-group" ng-hide="client.business_structure == 'Individual' || client.business_structure == 'Sole Trader'  ">
                     <label>Name</label>
                     <input class="form-control" ng-model="client.name" required >
+                </div>
+                 <div class="form-group" ng-show="client.business_structure == 'Individual' || client.business_structure == 'Sole Trader'  ">
+                    <label>First Name</label>
+                    <input class="form-control" ng-model="client.firstName" >
+                    <label>Last Name</label>
+                    <input class="form-control" ng-model="client.lastName" >
+                    <label>Other Name</label>
+                    <input class="form-control" ng-model="client.otherName" >
+                    <label>Title</label>
+                    <input class="form-control" ng-model="client.title" >
+                     <label for="singleSelect">Gender :  </label>
+                        <select name="singleSelect" id="singleSelect" ng-model="client.gender">
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                      </select><br>
                 </div>
                 <div class="form-group">
                     <label>Phone</label>
@@ -86,10 +101,6 @@
                 <div class="form-group">
                     <label>Branch/CAC/ICA #</label>
                     <input class="form-control"  ng-model="client.branch">
-                </div>
-                <div class="form-group">
-                <label>Client Code</label>
-                    <input class="form-control"  ng-model="client.client_code">
                 </div>
                 <div class="form-group">
                     <label>BSB Bumber</label>

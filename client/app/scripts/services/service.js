@@ -10,6 +10,9 @@ myApp.factory('ClientService', ['$http',function($http) {
                   get : function() {
                     return $http.get(clientUrl);
                 },
+                  getOne : function(id) {
+                    return $http.get(clientUrl + '/' + id);
+                },
                   create : function(client){
                     return $http.post(clientUrl, client);
                   },
@@ -186,6 +189,25 @@ myApp.factory('LoginService', ['$http',function($http) {
 
 myApp.factory('UploadCallService', ['$http',function($http) { 
   var uploadCallUrl =  host + '/call';
+  var service = {
+                  get : function() {
+                    return $http.get(uploadCallUrl);
+                },
+                  create : function(call){
+                    return $http.post(uploadCallUrl, call);
+                  },
+                  delete : function(id){
+                    return $http.delete(uploadCallUrl + '/' + id);
+                  },
+                  edit :  function (call) {
+                        return $http.put(uploadCallUrl + '/' + call._id, call);
+                    }
+  };
+  return service;
+}]);
+
+myApp.factory('GroupsService', ['$http',function($http) { 
+  var uploadCallUrl =  host + '/groups';
   var service = {
                   get : function() {
                     return $http.get(uploadCallUrl);

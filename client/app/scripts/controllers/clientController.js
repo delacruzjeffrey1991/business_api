@@ -61,6 +61,17 @@ myApp.controller('AddClientCtrl', ['$scope' ,'$state','ClientService','$statePar
    
     $scope.addClient = function(client){
         if(!client.isEdit){
+            
+            if(!client.lastName){
+                console.log('here');
+               
+                client.client_code = client.name + Math.floor((Math.random() * 1000) + 1);
+            }else{
+                 client.name = client.title + ' ' + client.firstName + ' ' + client.lastName;
+                client.client_code = client.lastName + Math.floor((Math.random() * 1000) + 1);
+            }
+            console.log(client.client_code)
+            client.client_code = client.client_code.trim();
             ClientService.create(client)
                 .then(function successCallback(response) {
                     $state.go('dashboard.client')

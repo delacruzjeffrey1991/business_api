@@ -9,5 +9,6 @@ module.exports = {
   'user' : require('./controllers/UserController'),
   'call' : require('./controllers/CallController'),
   'review' : require('./controllers/ReviewController'),
-  'authenticate' : require('./controllers/AuthenticationController')
+  'authenticate' : require('./controllers/AuthenticationController'),
+  'groups' : require('./controllers/GroupsController')
 };
