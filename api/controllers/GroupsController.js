@@ -3,9 +3,9 @@ var jwt   = require("jsonwebtoken");
 module.exports = function(app, route) {
 
 
-  Resource(app, '', route, app.models.qaProfile).rest({
+  Resource(app, '', route, app.models.groups).rest({
   before: function(req, res, next) {
-     req.modelQuery = this.model.where().populate('grade');
+     req.modelQuery = this.model.where().populate('client_list');
   		var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
 			  if (token) {

@@ -212,6 +212,9 @@ myApp.factory('GroupsService', ['$http',function($http) {
                   get : function() {
                     return $http.get(uploadCallUrl);
                 },
+                   getOne : function(id) {
+                    return $http.get(uploadCallUrl + '/' + id);
+                },
                   create : function(call){
                     return $http.post(uploadCallUrl, call);
                   },

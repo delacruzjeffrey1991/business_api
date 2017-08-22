@@ -182,6 +182,20 @@ angular
           }
         }
     })
+    .state('dashboard.show_group', {
+      templateUrl:'views/show_group.html',
+        url: "/show_group.html/:groupId",
+        controller:'ShowGroupCtrl',
+        resolve: {
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/showGroupController.js',
+                'scripts/services/service.js']
+            })
+          }
+        }
+    })
     .state('dashboard.addClient',{
         templateUrl:'views/addClient.html',
         url:'/addClient',
@@ -194,6 +208,20 @@ angular
             return $ocLazyLoad.load({
                 name:'sbAdminApp',
                 files:['scripts/controllers/clientController.js',
+                'scripts/services/service.js']
+            })
+          }
+        }
+    })
+ .state('dashboard.addMember',{
+        templateUrl:'views/addMember.html',
+        url:'/addMember/:groupId',
+        controller : 'addMemberCtrl',
+        resolve: {
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/showGroupController.js',
                 'scripts/services/service.js']
             })
           }

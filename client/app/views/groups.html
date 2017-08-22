@@ -28,7 +28,7 @@
                         <tbody>
                             <tr ng-repeat="groups in groupss">
                                 <td>{{ $index + 1 }}</td>
-                               <td><a ui-sref="dashboard.show_client({clientId : client._id})">{{ groups.name }}</a></td>
+                               <td><a ui-sref="dashboard.show_group({groupId : groups._id})">{{ groups.name }}</a></td>
                                
                                <td>
                                 <button type="button" ng-click="modifyGroups(groups,$index)" class="btn btn-warning"><i class="fa fa-edit"></i></button>

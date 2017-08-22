@@ -8,5 +8,6 @@ module.exports = {
   campaign : require('./Campaign'),
   user : require('./User'),
   call : require('./Call'),
-  review : require('./Review')
+  review : require('./Review'),
+  groups : require('./Group')
 };
