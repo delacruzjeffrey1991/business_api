@@ -10,12 +10,16 @@ var ContactSchema = new mongoose.Schema({
   },
   phone: {
     type: Number
-  },
-  messanger: {
+  },  
+  mobile: {
     type: String
   },
-  skype: {
+  position: {
     type: String
+  },
+   client: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Client'
   }
 });
 

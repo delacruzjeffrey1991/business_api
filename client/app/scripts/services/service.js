@@ -227,3 +227,47 @@ myApp.factory('GroupsService', ['$http',function($http) {
   };
   return service;
 }]);
+
+myApp.factory('ContactService', ['$http',function($http) { 
+  var uploadCallUrl =  host + '/contact';
+  var service = {
+                  get : function() {
+                    return $http.get(uploadCallUrl);
+                },
+                   getOne : function(id) {
+                    return $http.get(uploadCallUrl + '/' + id);
+                },
+                  create : function(call){
+                    return $http.post(uploadCallUrl, call);
+                  },
+                  delete : function(id){
+                    return $http.delete(uploadCallUrl + '/' + id);
+                  },
+                  edit :  function (call) {
+                        return $http.put(uploadCallUrl + '/' + call._id, call);
+                    }
+  };
+  return service;
+}]);
+
+myApp.factory('RelationshipService', ['$http',function($http) { 
+  var uploadCallUrl =  host + '/relationship';
+  var service = {
+                  get : function() {
+                    return $http.get(uploadCallUrl);
+                },
+                   getOne : function(id) {
+                    return $http.get(uploadCallUrl + '/' + id);
+                },
+                  create : function(call){
+                    return $http.post(uploadCallUrl, call);
+                  },
+                  delete : function(id){
+                    return $http.delete(uploadCallUrl + '/' + id);
+                  },
+                  edit :  function (call) {
+                        return $http.put(uploadCallUrl + '/' + call._id, call);
+                    }
+  };
+  return service;
+}]);

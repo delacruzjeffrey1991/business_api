@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Contacts</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Contact List
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    <div >
+                     <table datatable="ng" dt-options="dtOptions" dt-instance="dtInstance" dt-column-defs="dtColumnDefs" class="row-border hover table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Client</th>
+                                <th>Phone</th>
+                                
+                                <th>Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="contact in contacts">
+                                <td>{{ $index + 1 }}</td>
+                               <td><a ui-sref="dashboard.show_contact({contactId : contact._id})">{{ contact.name }}</a></td>
+                               <td>{{contact.position}}</td>
+                               <td>{{ contact.client.name }}</td>
+                               <td>{{ contact.phone }}</td>
+                               
+                               
+                               <td>
+                                <button type="button" ng-click="modifyContact(contact,$index)" class="btn btn-warning"><i class="fa fa-edit"></i></button>
+                                <button type="button" ng-click="removeContact(contact,$index)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+                          </div>
+                          <!-- <button class= "btn btn-success" ng-click="accept($index)"><strong>Add New Contact</strong></button> -->
+<!--                           <a ui-sref="dashboard.addContact">
+                                <button class="btn btn-success" ><strong>New Contact</strong></button>
+                            </a> -->
+                          <!-- /.table-responsive -->
+                      </div>
+                      <!-- /.panel-body -->
+                  </div>
+                  <!-- /.panel -->
+              </div>
+              <!-- /.col-lg-6 -->
+          </div>

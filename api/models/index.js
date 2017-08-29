@@ -9,5 +9,6 @@ module.exports = {
   user : require('./User'),
   call : require('./Call'),
   review : require('./Review'),
-  groups : require('./Group')
+  groups : require('./Group'),
+  relationship : require('./Relationship'),
 };

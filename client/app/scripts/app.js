@@ -168,6 +168,20 @@ angular
           }
         }
     })
+  .state('dashboard.contact',{
+        templateUrl:'views/contact.html',
+        url:'/contact',        
+        controller:'ContactCtrl',
+        resolve: {
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/contactController.js',
+                'scripts/services/service.js']
+            })
+          }
+        }
+    })
     .state('dashboard.show_client', {
       templateUrl:'views/show_client.html',
         url: "/show_client.html/:clientId",

@@ -10,5 +10,6 @@ module.exports = {
   'call' : require('./controllers/CallController'),
   'review' : require('./controllers/ReviewController'),
   'authenticate' : require('./controllers/AuthenticationController'),
-  'groups' : require('./controllers/GroupsController')
+  'groups' : require('./controllers/GroupsController'),
+  'relationship' : require('./controllers/RelationshipController')
 };

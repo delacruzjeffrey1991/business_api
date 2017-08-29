@@ -3,11 +3,10 @@ var jwt   = require("jsonwebtoken");
 module.exports = function(app, route) {
 
 
-  Resource(app, '', route, app.models.contact).rest({
-
-   before: function(req, res, next) {
-   	 req.modelQuery = this.model.where().populate('client');
-		var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  Resource(app, '', route, app.models.relationship).rest({
+  before: function(req, res, next) {
+     req.modelQuery = this.model.where().populate('client').populate('relatedClient');
+  		var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
 			  if (token) {
 			    jwt.verify(token, 'superSecret', function(err, decoded) {      
@@ -26,8 +25,8 @@ module.exports = function(app, route) {
 			    });
 			    
 			}
-		}	
-});
+	  }
+  });
 
   return function(req, res, next) {
     next();

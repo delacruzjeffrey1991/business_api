@@ -1,6 +1,16 @@
 var mongoose = require('mongoose');
 
 var ClientSchema = new mongoose.Schema({
+  group_list : [{ 
+    type : mongoose.Schema.Types.ObjectId,
+    ref: 'Groups' 
+
+  }],
+  relationship_list : [{ 
+    type : mongoose.Schema.Types.ObjectId,
+    ref: 'Relationship' 
+
+  }],
   name: {
     type: String,
     required: true

@@ -50,14 +50,6 @@ myApp.controller('AddClientCtrl', ['$scope' ,'$state','ClientService','$statePar
  init();
 
 
-     ProductService.get()
-    .then(function successCallback(response) {
-        $scope.products = response.data;
-
-    }, function errorCallback(response) {
-
-    })
-
    
     $scope.addClient = function(client){
         if(!client.isEdit){

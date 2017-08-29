@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h3>Select Group!</h3>
+</div>
+<form name="form.userForm" ng-submit="submitForm()" novalidate>
+    <div class="modal-body">
+        <div class="radio" ng-repeat="groups in groupss">
+            <label ng-hide="groups.hide">
+               <input type="checkbox" name="groups"  ng-model="groups.checked" ng-value="groups._id" /> {{groups.name}}
+           </label>
+       </div>
+
+   </div>
+   <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-click="save()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
+</form>

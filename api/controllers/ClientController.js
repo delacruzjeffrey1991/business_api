@@ -5,7 +5,7 @@ module.exports = function(app, route) {
 
   Resource(app, '', route, app.models.client).rest({
   before: function(req, res, next) {
-     req.modelQuery = this.model.where().populate('product').populate('op_contact').populate('acc_contact').populate('tech_contact');
+     req.modelQuery = this.model.where().populate('groups');
      var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
 			  if (token) {
