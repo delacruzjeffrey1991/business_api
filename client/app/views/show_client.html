@@ -1,82 +1,170 @@
+<style>
+  .row-bordered:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    margin: 20px;
+    margin-left: 35px;
+
+  }
+
+  .row-bordered-no-margin:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    margin: 15px;
+
+  }
+
+  .trial{
+    margin-bottom: 15px;
+  }
+
+  .left-align{
+    margin-left: 20px;
+    color: gray;
+
+  }
+
+  .highlights{
+   margin-bottom : 15px; 
+   border-bottom: 1px solid #ccc; 
+   margin-right : 5px;
+ }
+
+ .bigger{
+  font-weight : bold;
+  font-size : 17px;
+
+}
+</style>
+
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header">Client</h1>
+    <h1 class="page-header">{{client.name}}</h1>
+    <p> Client - <span style="color : gray">{{client.business_structure}}</span></p>
   </div>
   <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-7">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4> {{client.name}} </h4>
-        <p> Client : {{client.business_structure}}</p>
+        <p style="font-weight: bold"> Details </p>
       </div>
       <!-- /.panel-heading -->
       <div class="panel-body">
-        <h5> Tax and Company </h5>
-        <div class="row">
-          <div class="col-xs-3">TFN</div>
-          <div class="col-xs-9">{{client.tfn}}</div>
+        <h5 class="highlights"> Tax and Company </h5>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">TFN</span></div>
+          <div class="col-xs-5 trial">{{client.tfn ? client.tfn : "-"}}</div>
         </div>
-        <div class="row">
-          <div class="col-xs-3">ABN/WPN</div>
-          <div class="col-xs-9">{{client.abn}}</div>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">ABN/WPN</span></div>
+          <div class="col-xs-5 trial">{{client.abn ? client.abn : "-"}}</div>
         </div>
-        <div class="row">
-          <div class="col-xs-3">Branch/CAC/ICA #</div>
-          <div class="col-xs-9">{{client.branch}}</div>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">Branch/CAC/ICA #</span></div>
+          <div class="col-xs-5 trial">{{client.branch ? client.branch : "-"}}</div>
         </div>
-        <div class="row">
-          <div class="col-xs-3">BSB Bumber</div>
-          <div class="col-xs-9">{{client.bsb}}</div>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">BSB Bumber</span></div>
+          <div class="col-xs-5 trial">{{client.bsb ? client.bsb : "-"}}</div>
         </div>
-        <div class="row">
-          <div class="col-xs-3">Account Number</div>
-          <div class="col-xs-9">{{client.account_number}}</div>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">Account Number</span></div>
+          <div class="col-xs-5 trial">{{client.account_number ? client.account_number : "-"}}</div>
         </div>
-        <div class="row">
-          <div class="col-xs-3">Account Name</div>
-          <div class="col-xs-9">{{client.account_name}}</div>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">Account Name</span></div>
+          <div class="col-xs-5 trial">{{client.account_name ? client.account_name : "-"}}</div>
         </div>
-        <div class="row">
-          <div class="col-xs-3">Financial Institution Name</div>
-          <div class="col-xs-9">{{client.financial_institution_name}}</div>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">Financial Institution Name</span></div>
+          <div class="col-xs-5 trial">{{client.financial_institution_name ? client.financial_institution_name : "-"}}</div>
         </div>
-        <div class="row">
-          <div class="col-xs-3">Client Code</div>
-          <div class="col-xs-9">{{client.client_code}}</div>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">Client Code</span></div>
+          <div class="col-xs-5 trial">{{client.client_code ? client.client_code : "-"}}</div>
         </div>
-        <div ng-controller="AddGroupCtrl">
-          <div class="row" style="margin-top: 50px">
-            <button class="btn btn-link" ng-click="addGroup()">+ Add to Group </button>
-          </div> 
-        </div>
-        <div ng-controller="AddContactCtrl">
-         <div class="row" >
-          <button class="btn btn-link" ng-click="addContact()">+ Add Contact </button>
-        </div> 
       </div>
-      <div ng-controller="AddRelationshipCtrl">
-       <div class="row" >
-        <button class="btn btn-link" ng-click="addRelationship()">+ Add Relationship </button>
-      </div> 
+      <!-- /.panel-body -->
     </div>
-    <div class="row" style="margin-top: 50px">
-      <div class="col-xs-3"><h4>Relationships : </h4></div>
-    </div>  
-    <div ng-repeat="relationship in relationships">
-      <div class="row" >
-        <div class="col-xs-3">
-        {{relationship.type}} <a ui-sref="dashboard.show_client({clientId : relationship.relatedClient._id})">{{ relationship.relatedClient.name }}</a>
-        </div>  
-
-      </div>
-    </div>
+    <!-- /.panel -->
   </div>
-  <!-- /.panel-body -->
+
+
+
+  <div class="col-lg-5">
+    <div ng-controller="AddGroupCtrl">
+     <div style="width: 400px">
+       <div class="row row-bordered-no-margin" >
+        <div class="col-xs-12 trial bigger">Groups
+          <span style="margin-left : 190px" ><button class="btn btn-link" ng-click="addGroup()">+ Add to Group </button></span></div>
+        </div>
+      </div>
+      <div ng-repeat="groups in groupss">
+        <div ng-show="groups.hide" style="width: 400px">
+          <div class="row row-bordered-no-margin" >
+            <div class="col-xs-12">
+              <a ui-sref="dashboard.show_group({groupId : groups._id})">{{ groups.name }}</a>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top : 30px">
+      <div ng-controller="AddContactCtrl">
+       <div style="width: 400px">
+         <div class="row row-bordered-no-margin" >
+          <div class="col-xs-12 trial bigger">Contacts
+            <span style="margin-left : 180px" ><button class="btn btn-link" ng-click="addContact()">+ Add Contact </button></span></div>
+          </div>
+        </div>
+        <div ng-repeat="contact in contacts">
+          <div ng-show="contact.show" style="width: 400px">
+            <div class="row row-bordered-no-margin" >
+              <div class="col-xs-12">
+                <p>{{ contact.name }}</p>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   <div style="margin-top : 30px">
+    <div ng-controller="AddRelationshipCtrl">
+       <div style="width: 400px">
+         <div class="row row-bordered-no-margin" >
+          <div class="col-xs-12 trial bigger">Relationships
+            <span style="margin-left : 135px" ><button class="btn btn-link" ng-click="addRelationship()">+ Add Relationship </button></span></div>
+          </div>
+        </div>
+        <div ng-repeat="relationship in relationships">
+          <div  style="width: 400px">
+            <div class="row row-bordered-no-margin" >
+              <div class="col-xs-12">
+                {{relationship.type}} <a ui-sref="dashboard.show_client({clientId : relationship.relatedClient._id})">{{ relationship.relatedClient.name }}</a>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+<!-- <div class="row" style="margin-top: 50px">
+  <div class="col-xs-3"><h4>Relationships : </h4></div>
+</div>  
+<div ng-repeat="relationship in relationships">
+  <div class="row" >
+    <div class="col-xs-3">
+      {{relationship.type}} <a ui-sref="dashboard.show_client({clientId : relationship.relatedClient._id})">{{ relationship.relatedClient.name }}</a>
+    </div>  
+
+  </div>
+</div> -->
+
 </div>
-<!-- /.panel -->
-</div>
+
 <!-- /.col-lg-6 -->
 </div>

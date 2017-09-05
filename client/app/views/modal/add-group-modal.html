@@ -8,10 +8,18 @@
                <input type="checkbox" name="groups"  ng-model="groups.checked" ng-value="groups._id" /> {{groups.name}}
            </label>
        </div>
+<!--        <div class="row">
+                <div class="col-xs-5"> <label for="sel1">Groups</label></div>
+                <div class="col-xs-7">
+                  <select  class="form-control" id="sel1" ng-model="groups"> 
+                    <option ng-repeat="option in groupss" value="{{option._id}}" ng-hide="{{option.hide}}">{{option.name}}</option>
+                </select>
+            </div>
+        </div> -->
 
    </div>
    <div class="modal-footer">
-    <button type="submit" class="btn btn-primary" ng-click="save()">OK</button>
+    <button type="submit" class="btn btn-primary" ng-click="save(groups)">OK</button>
     <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 </div>
 </form>
