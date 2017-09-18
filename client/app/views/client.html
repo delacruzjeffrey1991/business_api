@@ -19,20 +19,22 @@
                         <thead>
                             <tr>
 
-                                <th>ID</th>
                                 <th>Name</th>
+                                <th>TFN</th>
+                                <th>ABN/WPN</th>
+                                <th>Email</th>
                                 <th>Phone</th>
-                                <th>Address</th>
                                 <th>Actions</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="client in clients">
-                                <td>{{ $index + 1 }}</td>
                                <td><a ui-sref="dashboard.show_client({clientId : client._id})">{{ client.name }}</a></td>
+                               <td>{{ client.tfn }}</td>
+                               <td>{{ client.abn }}</td>
+                               <td><a>{{ client.email }}</a></td>
                                <td>{{ client.phone }}</td>
-                               <td>{{ client.street_address}} {{client.city}} {{client.region}} {{client.postal}}</td>
                                
                                <td>
                                 <button type="button" ng-click="modifyClient(client,$index)" class="btn btn-warning"><i class="fa fa-edit"></i></button>

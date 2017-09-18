@@ -8,7 +8,8 @@ angular
     'angular-loading-bar',
     'datatables',
     'ngResource',
-    'ngStorage'
+    'ngStorage',
+    'ui.bootstrap.datetimepicker'
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider','$httpProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider,$httpProvider) {
     

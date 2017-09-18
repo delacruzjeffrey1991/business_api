@@ -1,7 +1,7 @@
 'use strict';
 
 var myApp  = angular.module('sbAdminApp')
-myApp.controller('ClientCtrl', ['$scope' ,'$state','ClientService','$stateParams' , 'DTOptionsBuilder', 'DTColumnDefBuilder' ,function ($scope ,$state,ClientService,$stateParams, DTOptionsBuilder, DTColumnDefBuilder) {
+myApp.controller('ClientCtrl', ['$scope' ,'$state','ClientService' ,'RelationshipService','$stateParams' , 'DTOptionsBuilder', 'DTColumnDefBuilder' ,function ($scope ,$state,ClientService,RelationshipService,$stateParams, DTOptionsBuilder, DTColumnDefBuilder) {
 
 
 
@@ -33,14 +33,59 @@ myApp.controller('ClientCtrl', ['$scope' ,'$state','ClientService','$stateParams
 
 
     $scope.removeClient = function(client,index) {
-       
-        ClientService.delete(client._id).then(function successCallback(response) {
-                
+
+        RelationshipService.get()
+        .then(function successCallback(response) {
+
+
+            $scope.relationships = [];
+            console.log($scope.relationships);
+            console.log(response.data);
+
+            for(var i=0; i<response.data.length; i++){
+                var curRel = response.data[i];
+                console.log(curRel);
+                console.log(curRel.client._id);
+                console.log(curRel.relatedClient._id);
+                console.log(client._id);
+                if(curRel.client && curRel.client._id == client._id  ){
+                    console.log(curRel);
+                    RelationshipService.delete(curRel._id).then(function successCallback(response) {
+                        console.log('yes');
+                        console.log(response.data);
+
+                    }, function errorCallback(response) {
+
+                    })
+                }
+
+                if(curRel.relatedClient && curRel.relatedClient._id == client._id ){
+                    RelationshipService.delete(curRel._id).then(function successCallback(response) {
+
+                        console.log('yes');
+                        console.log(response.data);
+
+                    }, function errorCallback(response) {
+
+                    })
+
+                }
+            }
+
+            ClientService.delete(client._id).then(function successCallback(response) {
+
                 $scope.clients.splice(index, 1);
-    
+
+            }, function errorCallback(response) {
+
+            })
+
+
         }, function errorCallback(response) {
 
-        })
+        });
+
+
     }
 
 }]);
@@ -50,44 +95,44 @@ myApp.controller('AddClientCtrl', ['$scope' ,'$state','ClientService','$statePar
  init();
 
 
-   
-    $scope.addClient = function(client){
-        if(!client.isEdit){
-            
-            if(!client.lastName){
-                console.log('here');
-               
-                client.client_code = client.name + Math.floor((Math.random() * 1000) + 1);
-            }else{
-                 client.name = client.title + ' ' + client.firstName + ' ' + client.lastName;
-                client.client_code = client.lastName + Math.floor((Math.random() * 1000) + 1);
-            }
-            console.log(client.client_code)
-            client.client_code = client.client_code.trim();
-            ClientService.create(client)
-                .then(function successCallback(response) {
-                    $state.go('dashboard.client')
 
-            }, function errorCallback(response) {
-            })
+ $scope.addClient = function(client){
+    if(!client.isEdit){
+
+        if(!client.lastName){
+            console.log('here');
+
+            client.client_code = client.name + Math.floor((Math.random() * 1000) + 1);
         }else{
-            ClientService.edit(client).then(function successCallback(response) {
+         client.name = client.title + ' ' + client.firstName + ' ' + client.lastName;
+         client.client_code = client.lastName + Math.floor((Math.random() * 1000) + 1);
+     }
+     console.log(client.client_code)
+     client.client_code = client.client_code.trim();
+     ClientService.create(client)
+     .then(function successCallback(response) {
+        $state.go('dashboard.client')
 
-                $state.go('dashboard.client')
-            
-            }, function errorCallback(response) {
+    }, function errorCallback(response) {
+    })
+ }else{
+    ClientService.edit(client).then(function successCallback(response) {
 
-            })
-        }
-    }
+        $state.go('dashboard.client')
+
+    }, function errorCallback(response) {
+
+    })
+}
+}
 
 
-   function init(){
-        if($stateParams && $stateParams.client){
-             $scope.client = $stateParams.client;
-             $scope.client.isEdit = true;            
-        }
-    }
+function init(){
+    if($stateParams && $stateParams.client){
+     $scope.client = $stateParams.client;
+     $scope.client.isEdit = true;            
+ }
+}
 
 
 }]);

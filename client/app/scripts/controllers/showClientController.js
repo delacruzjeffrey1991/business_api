@@ -19,7 +19,9 @@ myApp.controller('ShowClientCtrl', ['$scope' ,'$state','ClientService','$statePa
 	//todo applied find on mongoose
 	
 
-
+    $scope.modifyClient = function(client) {
+        $state.go('dashboard.addClient', {client : client});
+    }
 
 
 
@@ -59,7 +61,7 @@ myApp.controller('AddGroupCtrl', ['$scope' ,'$modal', '$log','GroupsService','Cl
 				console.log($scope.groupss[j]);
 				//for client side
 				addedGroupArr.push($scope.groupss[j]);
-
+				$scope.groupss[j].hide = true;
 				//for group side
 				GroupsService.getOne($scope.groupss[j]._id)
 				.then(function successCallback(response) {
@@ -139,7 +141,6 @@ myApp.controller('AddContactCtrl', ['$scope' ,'$modal', '$log','GroupsService','
 	ContactService.get()
 	.then(function successCallback(response) {
 		$scope.contacts = response.data;
-		console.log($scope.groupss)
 		for( var j=0; j<$scope.contacts.length; j++){
 			var curContact = $scope.contacts[j];
 			
@@ -156,10 +157,11 @@ myApp.controller('AddContactCtrl', ['$scope' ,'$modal', '$log','GroupsService','
 	$scope.save = function(contact){
 		console.log(contact);
 		contact.client = $scope.client;
-
 		ContactService.create(contact)
 		.then(function successCallback(response) {
-			console.log('contact created' + response.data.contact);
+			console.log( response.data);
+			response.data.show = true;
+			$scope.contacts.push(response.data);
 
 		}, function errorCallback(response) {
 		})
@@ -213,14 +215,16 @@ RelationshipService.get()
 
 		$scope.relationships = [];
 		console.log($scope.relationships);
+		console.log(response.data);
 
 		for(var i=0; i<response.data.length; i++){
 			var curRel = response.data[i];
-			if(curRel.client._id === $scope.client._id  ){
+			console.log(curRel);
+			if(curRel.client && curRel.client._id === $scope.client._id  ){
 				$scope.relationships.push(curRel);
 			}
 
-			if(curRel.relatedClient._id === $scope.client._id ){
+			if(curRel.relatedClient && curRel.relatedClient._id === $scope.client._id ){
 				if(curRel.type === "Child Of"){
 					curRel.type = "Parent Of";
 				}else if(curRel.type === "Parent Of"){
@@ -261,13 +265,24 @@ RelationshipService.get()
 	$scope.save = function(relationship){
 		console.log(relationship);
 		relationship.client = $scope.client;
-
 		RelationshipService.create(relationship)
 		.then(function successCallback(response) {
-			console.log('relationship created' + response.data);
+			var rel = response.data;
+			ClientService.getOne(response.data.relatedClient)
+			.then(function successCallback(response) {
 
+				 
+				console.log('client');
+				console.log(response.data);
+				rel.relatedClient = response.data;
+				$scope.relationships.push(rel);
+
+			}, function errorCallback(response) {
+
+			});
 		}, function errorCallback(response) {
 		})
+	
 	}
 
 	$scope.addRelationship = function () {

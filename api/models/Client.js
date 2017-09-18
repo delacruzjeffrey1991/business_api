@@ -18,6 +18,21 @@ var ClientSchema = new mongoose.Schema({
     business_structure: {
     type: String
   },
+  partner: {
+    type: String
+  },
+  manager: {
+    type: String
+  },
+      title: {
+    type: String
+  },
+      gender: {
+    type: String
+  },
+      dob: {
+    type: String
+  },
     phone: {
     type: String
   },
@@ -45,6 +60,9 @@ var ClientSchema = new mongoose.Schema({
     postal: {
     type: String
   },
+    country: {
+    type: String
+  },
   tfn: {
     type: String
   },
@@ -58,7 +76,7 @@ var ClientSchema = new mongoose.Schema({
     type: String
   },
    balance_date: {
-    type: Date
+    type: String
 
   },
    agent: {
@@ -79,6 +97,14 @@ var ClientSchema = new mongoose.Schema({
      client_code: {
     type: String
   },
+  prepare_activity_statements: {
+    type: String
+
+  },
+     prepare_tax_form: {
+    type: String
+
+  },
      bsb: {
     type: String
   },
@@ -98,7 +124,7 @@ var ClientSchema = new mongoose.Schema({
     type: Boolean
   },
   // date_created: {
-  //   type: Date, default: Date.now
+  //   type: String, default: String.now
   // },
   //  product: {
   //   type: mongoose.Schema.Types.ObjectId,
