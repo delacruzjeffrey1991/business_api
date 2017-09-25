@@ -183,6 +183,20 @@ angular
           }
         }
     })
+      .state('dashboard.show_contact', {
+      templateUrl:'views/show_contact.html',
+        url: "/show_contact.html/:contactId",
+        controller:'ShowContactCtrl',
+        resolve: {
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/showContactController.js',
+                'scripts/services/service.js']
+            })
+          }
+        }
+    })
     .state('dashboard.show_client', {
       templateUrl:'views/show_client.html',
         url: "/show_client.html/:clientId",
@@ -228,6 +242,23 @@ angular
           }
         }
     })
+     .state('dashboard.addContact',{
+        templateUrl:'views/addContact.html',
+        url:'/addContact',
+        params: {
+            contact: null
+         },
+        controller : 'AddContactCtrl',
+        resolve: {
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/contactController.js',
+                'scripts/services/service.js']
+            })
+          }
+        }
+    })   
  .state('dashboard.addMember',{
         templateUrl:'views/addMember.html',
         url:'/addMember/:groupId',

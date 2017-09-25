@@ -1,0 +1,104 @@
+<style type="text/css">
+  label{
+    color: #444;
+    font-size: 12px;
+    margin-left: 15px;
+  }
+
+  .row-bordered:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    margin-top: 15px;
+
+  }
+
+</style>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">{{contact.isEdit ?  'Edit Contact' : 'New Contact' }}</h1>
+  </div>  
+  <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row" >
+  <div class="col-lg-9">
+    <div class="panel-group" >
+
+  <div class="panel panel-default" style="background-color:#f5f5f5;margin-top:0">
+    <div class="panel-heading" style="background-color:white">
+      <div class="panel-body">
+
+          <div class="row row-bordered">
+     <div style="margin-top : 22px; margin-bottom : 15px" class="col-lg-2">
+       <label style="margin-left:inherit">Name</label>
+     </div>
+     <div style="margin-top : 15px; margin-bottom : 15px" class="col-lg-3">
+      <input class="form-control"  ng-model="contact.name">
+    </div>
+  </div>
+
+       <div class="row row-bordered">
+         <div style="margin-top : 12px; margin-bottom : 15px" class="col-lg-2">
+          <label style="margin-left:inherit">Phone</label>
+        </div>
+        <div style="margin-top : 5px; margin-bottom : 15px" class="col-lg-3">
+          <input class="form-control"  ng-model="contact.phone">
+        </div>
+      </div>
+
+             <div class="row row-bordered">
+         <div style="margin-top : 12px; margin-bottom : 15px" class="col-lg-2">
+          <label style="margin-left:inherit">Mobile</label>
+        </div>
+        <div style="margin-top : 5px; margin-bottom : 15px" class="col-lg-3">
+          <input class="form-control"  ng-model="contact.mobile">
+        </div>
+      </div>
+
+
+
+    <div class="row row-bordered">
+     <div style="margin-top : 22px; margin-bottom : 15px" class="col-lg-2">
+       <label style="margin-left:inherit">Email Address</label>
+     </div>
+     <div style="margin-top : 15px; margin-bottom : 15px" class="col-lg-3">
+      <input class="form-control"  ng-model="contact.email">
+    </div>
+  </div>
+
+
+    <div class="row row-bordered">
+     <div style="margin-top : 22px; margin-bottom : 15px" class="col-lg-2">
+       <label style="margin-left:inherit">Position</label>
+     </div>
+     <div style="margin-top : 15px; margin-bottom : 15px" class="col-lg-3">
+      <input class="form-control"  ng-model="contact.position">
+    </div>
+  </div>
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="form-group">
+  <button ng-click="addContact(contact)" class="btn btn-success" >Save<i class="fa fa-save fa-fw"></i></button>
+</div>
+</div>
+<!-- /.col-lg-6 (nested) -->
+</div>
+<!-- /.row (nested) -->
+</div>
+<!-- /.panel-body -->
+</div>
+<!-- /.panel -->
+</div>
+<!-- /.col-lg-12 -->
+</div>

@@ -15,6 +15,15 @@ var ClientSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+    firstName: {
+    type: String,
+  },
+    lastName: {
+    type: String,
+  },
+      otherName: {
+    type: String,
+  },
     business_structure: {
     type: String
   },

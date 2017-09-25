@@ -1,7 +1,7 @@
 'use strict';
 
 var myApp  = angular.module('sbAdminApp')
-myApp.controller('ClientCtrl', ['$scope' ,'$state','ClientService' ,'RelationshipService','$stateParams' , 'DTOptionsBuilder', 'DTColumnDefBuilder' ,function ($scope ,$state,ClientService,RelationshipService,$stateParams, DTOptionsBuilder, DTColumnDefBuilder) {
+myApp.controller('ClientCtrl', ['$scope' ,'$state','ClientService' ,'RelationshipService','$stateParams' , 'DTOptionsBuilder', 'DTColumnDefBuilder' , '$window', function ($scope ,$state,ClientService,RelationshipService,$stateParams, DTOptionsBuilder, DTColumnDefBuilder,$window) {
 
 
 
@@ -33,6 +33,9 @@ myApp.controller('ClientCtrl', ['$scope' ,'$state','ClientService' ,'Relationshi
 
 
     $scope.removeClient = function(client,index) {
+
+        var deleteUser = $window.confirm('Are you sure you want to delete ' +  client.name + '?');
+        if(deleteUser){
 
         RelationshipService.get()
         .then(function successCallback(response) {
@@ -84,6 +87,7 @@ myApp.controller('ClientCtrl', ['$scope' ,'$state','ClientService' ,'Relationshi
         }, function errorCallback(response) {
 
         });
+      }  
 
 
     }
@@ -104,6 +108,7 @@ myApp.controller('AddClientCtrl', ['$scope' ,'$state','ClientService','$statePar
 
             client.client_code = client.name + Math.floor((Math.random() * 1000) + 1);
         }else{
+         client.title = client.title? client.title : '';   
          client.name = client.title + ' ' + client.firstName + ' ' + client.lastName;
          client.client_code = client.lastName + Math.floor((Math.random() * 1000) + 1);
      }
@@ -111,7 +116,8 @@ myApp.controller('AddClientCtrl', ['$scope' ,'$state','ClientService','$statePar
      client.client_code = client.client_code.trim();
      ClientService.create(client)
      .then(function successCallback(response) {
-        $state.go('dashboard.client')
+        console.log(response);
+        $state.go('dashboard.show_client',{clientId : response.data._id })
 
     }, function errorCallback(response) {
     })

@@ -1,0 +1,94 @@
+<style>
+  .row-bordered:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    margin: 20px;
+    margin-left: 35px;
+
+  }
+
+  .row-bordered-no-margin:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    margin: 15px;
+
+  }
+
+  .trial{
+    margin-bottom: 15px;
+  }
+
+  .left-align{
+    margin-left: 20px;
+    color: gray;
+
+  }
+
+  .highlights{
+   margin-bottom : 15px; 
+   border-bottom: 1px solid #ccc; 
+   margin-right : 5px;
+ }
+
+ .bigger{
+  font-weight : bold;
+  font-size : 17px;
+
+}
+.contact-details{
+  font-size: 12px;
+}
+</style>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">{{contact.name}}
+     <span><button  ng-click="modifyContact(contact)" class="btn btn-link" ><i class="fa fa-pencil fa-fw"></i></button></span></h1>
+
+  </div>
+  <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+  <div class="col-lg-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p style="font-weight: bold"> Details </p>
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <h5 class="highlights"> Contact Information </h5>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">Name</span></div>
+          <div class="col-xs-5 trial">{{contact.name ? contact.name : "-"}}</div>
+        </div>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">Email</span></div>
+          <div class="col-xs-5 trial"><a>{{contact.email ? contact.email : "-"}}</a></div>
+        </div>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">Phone</span></div>
+          <div class="col-xs-5 trial">{{contact.phone ? contact.phone : "-"}}</div>
+        </div>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">Mobile</span></div>
+          <div class="col-xs-5 trial">{{contact.mobile ? contact.mobile : "-"}}</div>
+        </div>
+        <div class="row row-bordered">
+          <div class="col-xs-7 trial"><span class="left-align">Position</span></div>
+          <div class="col-xs-5 trial">{{contact.position ? contact.position : "-"}}</div>
+        </div>
+      <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+  </div>
+
+
+
+
+</div>
+
+<!-- /.col-lg-6 -->
+</div>

@@ -1,7 +1,7 @@
 'use strict';
 
 var myApp  = angular.module('sbAdminApp')
-myApp.controller('GroupsCtrl', ['$scope' ,'$state','GroupsService','$stateParams' , 'DTOptionsBuilder', 'DTColumnDefBuilder' ,function ($scope ,$state,GroupsService,$stateParams, DTOptionsBuilder, DTColumnDefBuilder) {
+myApp.controller('GroupsCtrl', ['$scope' ,'$state','GroupsService','$stateParams' , 'DTOptionsBuilder', 'DTColumnDefBuilder', '$window' ,function ($scope ,$state,GroupsService,$stateParams, DTOptionsBuilder, DTColumnDefBuilder, $window) {
 
 
 
@@ -33,14 +33,17 @@ myApp.controller('GroupsCtrl', ['$scope' ,'$state','GroupsService','$stateParams
 
 
     $scope.removeGroups = function(groups,index) {
+        var deleteGroup = $window.confirm('Are you sure you want to delete ' +  groups.name + '?');
+        if(deleteGroup){
        
-        GroupsService.delete(groups._id).then(function successCallback(response) {
-                
-                $scope.groups.splice(index, 1);
-    
-        }, function errorCallback(response) {
+            GroupsService.delete(groups._id).then(function successCallback(response) {
+                    
+                    $scope.groupss.splice(index, 1);
+        
+            }, function errorCallback(response) {
 
-        })
+            })
+         }
     }
 
 }]);

@@ -144,7 +144,7 @@ myApp.controller('AddContactCtrl', ['$scope' ,'$modal', '$log','GroupsService','
 		for( var j=0; j<$scope.contacts.length; j++){
 			var curContact = $scope.contacts[j];
 			
-			if(curContact.client._id === $scope.client._id ){
+			if(curContact.client && curContact.client._id === $scope.client._id ){
 				curContact.show = true;
 			}
 			
@@ -253,7 +253,7 @@ RelationshipService.get()
 		$scope.clients = response.data;
 		for(var i=0; i<$scope.clients.length; i++){
 			var curClient = $scope.clients[i];
-			if(curClient._id === $scope.client._id ){
+			if(curClient && curClient._id === $scope.client._id ){
 				$scope.clients[i].hide = true;
 			}
 		}
