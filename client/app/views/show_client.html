@@ -195,7 +195,7 @@
 </div>
 </div>       
 
-<div ng-controller="AddGroupCtrl">
+<div ng-controller="AddGroupClientCtrl">
  <div style="width: 400px">
    <div class="row row-bordered-no-margin" >
     <div class="col-xs-12 trial bigger">Groups
@@ -213,7 +213,7 @@
   </div>
 </div>
 <div style="margin-top : 30px">
-  <div ng-controller="AddContactCtrl">
+  <div ng-controller="AddContactClientCtrl">
    <div style="width: 400px">
      <div class="row row-bordered-no-margin" >
       <div class="col-xs-12 trial bigger">Contacts
@@ -224,7 +224,7 @@
       <div ng-show="contact.show" style="width: 400px">
         <div class="row row-bordered-no-margin" >
           <div class="col-xs-12">
-            <p>{{ contact.name }}</p>
+            <p><a ui-sref="dashboard.show_contact({contactId : contact._id})">{{ contact.name }}</a></p>
           </div>  
         </div>
       </div>
@@ -232,7 +232,7 @@
   </div>
 </div>
 <div style="margin-top : 30px">
-  <div ng-controller="AddRelationshipCtrl">
+  <div ng-controller="AddRelationshipClientCtrl">
    <div style="width: 400px">
      <div class="row row-bordered-no-margin" >
       <div class="col-xs-12 trial bigger">Relationships

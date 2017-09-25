@@ -30,7 +30,7 @@ myApp.controller('ShowClientCtrl', ['$scope' ,'$state','ClientService','$statePa
 
 }]);
 
-myApp.controller('AddGroupCtrl', ['$scope' ,'$modal', '$log','GroupsService','ClientService' ,function ($scope ,$modal, $log,GroupsService,ClientService) {
+myApp.controller('AddGroupClientCtrl', ['$scope' ,'$modal', '$log','GroupsService','ClientService' ,function ($scope ,$modal, $log,GroupsService,ClientService) {
 
 	//showing of groups
 	GroupsService.get()
@@ -136,7 +136,7 @@ myApp.controller('AddGroupCtrl', ['$scope' ,'$modal', '$log','GroupsService','Cl
 }]);
 
 
-myApp.controller('AddContactCtrl', ['$scope' ,'$modal', '$log','GroupsService','ClientService','ContactService' ,function ($scope ,$modal, $log,GroupsService,ClientService,ContactService) {
+myApp.controller('AddContactClientCtrl', ['$scope' ,'$modal', '$log','GroupsService','ClientService','ContactService' ,function ($scope ,$modal, $log,GroupsService,ClientService,ContactService) {
 
 	ContactService.get()
 	.then(function successCallback(response) {
@@ -208,7 +208,7 @@ myApp.controller('AddContactCtrl', ['$scope' ,'$modal', '$log','GroupsService','
 
 }]);
 
-myApp.controller('AddRelationshipCtrl', ['$scope' ,'$modal', '$log','GroupsService','ClientService','RelationshipService' ,function ($scope ,$modal, $log,GroupsService,ClientService,RelationshipService) {
+myApp.controller('AddRelationshipClientCtrl', ['$scope' ,'$modal', '$log','GroupsService','ClientService','RelationshipService' ,function ($scope ,$modal, $log,GroupsService,ClientService,RelationshipService) {
 
 RelationshipService.get()
 	.then(function successCallback(response) {
